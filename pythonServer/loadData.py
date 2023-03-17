@@ -40,4 +40,4 @@ if dataAsJson["data"]:
 else:
     print(" Api not working ")
 
-    print("testovací kok")
+    print("testovací kok kokok")
