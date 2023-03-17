@@ -11,7 +11,7 @@ url = "https://api.jikan.moe/v4/anime/"
 
 # get method of requests module
 # return response object
-response = requests.get(url)
+response = requests.get(url, params= {"sfw" : "true","sort":"desc", "order_by": "score", "min_score" : "5"})
 
 # json method of response object
 # convert json format data into
@@ -40,5 +40,5 @@ if dataAsJson["data"]:
 else:
     print(" Api not working ")
 
- 
+    print(" Jinej kok branch ")
 
