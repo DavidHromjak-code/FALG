@@ -19,42 +19,58 @@ order_by = input('Order by "mal_id" "title" "type" "rating" "start_date" "end_da
 
 minScore = None
 if order_by == "score":
-    minScore = input("Select minimal score for anime form 1 - 9:")
+  minScore = input("Select minimal score for anime form 1 - 9:")
 
 sort = input("sort asc or desc?")
 
-paramObject = Param(sfw,order_by,minScore,sort)
+paramObject = Param(sfw, order_by, minScore, sort)
 
 print("This is param object: " + paramObject.__str__())
 
-response = requests.get(url, params= {"sfw" : paramObject.sfw,"sort": paramObject.sort, "order_by": paramObject.order_by, "min_score" : paramObject.minScore})
+response = requests.get(url, params={"sfw": paramObject.sfw, "sort": paramObject.sort, "order_by": paramObject.order_by, "min_score": paramObject.minScore})
 
 # json method of response object
 # convert json format data into
 # python format data
 dataAsJson = response.json()
 
-# Now x contains list of nested dictionaries
-# Check the value of "cod" key is equal to
-# "404", means city is found otherwise,
-# city is not found
+
+# Check the value of "data" key is set
 if dataAsJson["data"]:
 
-    # store the value of "main"
-    # key in variable y
-    loadedAnime = dataAsJson["data"]
-    animeList = []
-    for anime in loadedAnime:
+  # store the value of "data"
+  loaded_anime = dataAsJson["data"]
+  animeList = []
+  for anime in loaded_anime:
+    # one way to set data on object
+    animeObject = Anime(anime["title"], anime["title_japanese"], anime["type"],
+                        anime["status"], anime["episodes"], anime["rating"], anime["url"])
 
-        animeObject = Anime(anime["title"], anime["url"])
-        print("This is anime: " + animeObject.__str__())
-        animeList.append(animeObject)
-    # store the value corresponding
-    # to the "temp" key of y
+    # second way to set data on object
+    animeObject.set_eng_name(anime["title"])
+    print("Anglický název: " + animeObject.get_eng_name())
+
+    animeObject.set_jap_name(anime["title_japanese"])
+    print("Japonský název: " + animeObject.get_jap_name())
+
+    animeObject.set_b_cast_type(anime["type"])
+    print("Typ vysílání: " + animeObject.get_b_cast_type())
+
+    animeObject.set_air_status(anime["status"])
+    print("Status vysílání: " + animeObject.get_air_status())
+
+    animeObject.set_eps(anime["episodes"])
+    print("Počet epizod: " + str(animeObject.get_eps()))
+
+    animeObject.set_age_group(anime["rating"])
+    print("Věková skupina: " + animeObject.get_age_group())
+
+    animeObject.set_url(anime["url"])
+    print("url: " + animeObject.get_url())
+
+    # print("This is anime: " + animeObject.__str__())
+    animeList.append(animeObject)
 
 
 else:
-    print(" Api not working ")
-
-    print(" Jinej kok branch ")
-
+  print(" Api not working ")
