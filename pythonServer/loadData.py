@@ -11,6 +11,10 @@ url = "https://api.jikan.moe/v4/anime/"
 
 # get method of requests module
 # return response object
+# TODO make params loadable by user input. In the future it will be as function params.
+# TODO For now you can make it as "minScore = input("Insect minimal score")"
+# TODO based on input from user we want to create params object.
+# TODO For example if order_by is not in input from the user we don't want to have oder_by in params
 response = requests.get(url, params= {"sfw" : "true","sort":"desc", "order_by": "score", "min_score" : "5"})
 
 # json method of response object
