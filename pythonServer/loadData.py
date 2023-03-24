@@ -1,6 +1,7 @@
 # import required modules
 import requests
 from domain.anime import Anime
+from domain.anime import Param
 
 # base_url variable to store url
 url = "https://api.jikan.moe/v4/anime/"
@@ -11,11 +12,26 @@ url = "https://api.jikan.moe/v4/anime/"
 
 # get method of requests module
 # return response object
-# TODO make params loadable by user input. In the future it will be as function params.
-# TODO For now you can make it as "minScore = input("Insect minimal score")"
-# TODO based on input from user we want to create params object.
-# TODO For example if order_by is not in input from the user we don't want to have oder_by in params
-response = requests.get(url, params= {"sfw" : "true","sort":"desc", "order_by": "score", "min_score" : "5"})
+# TODO make params loadable by user input. In the future it will be as function params. DONE
+# TODO For now you can make it as "minScore = input("Insect minimal score")"  DONE
+# TODO based on input from user we want to create params object. DONE
+# TODO For example if order_by is not in input from the user we don't want to have oder_by in params DONE asi idk 
+
+sfw = input("Want only sfw results true/false?")
+
+order_by = input('Order by "mal_id" "title" "type" "rating" "start_date" "end_date" "episodes" "score" "scored_by" "rank" "popularity" "members" "favorites" ?')
+
+minScore = None
+if order_by == "score":
+    minScore = input("Select minimal score for anime form 1 - 9:")
+
+sort = input("sort asc or desc?")
+
+paramObject = Param(sfw,order_by,minScore,sort)
+
+print("This is param object: " + paramObject.__str__())
+
+response = requests.get(url, params= {"sfw" : paramObject.sfw,"sort": paramObject.sort, "order_by": paramObject.order_by, "min_score" : paramObject.minScore})
 
 # json method of response object
 # convert json format data into
