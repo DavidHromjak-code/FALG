@@ -31,8 +31,7 @@ def load_data():
 
     print("This is param object: " + paramObject.__str__())
 
-    response = requests.get(url, params={"sfw": paramObject.sfw, "sort": paramObject.sort,
-                                         "order_by": paramObject.order_by, "min_score": paramObject.minScore})
+    response = requests.get(url)
 
     # json method of response object
     # convert json format data into
@@ -49,7 +48,7 @@ def load_data():
             # one way to set data on object
             print(anime)
             animeObject = Anime(anime["title"], anime["title_japanese"], anime["type"],
-                                anime["status"], anime["episodes"], anime["rating"], anime["url"], anime["images"]["jpg"]["image_url"])
+                                anime["episodes"], anime["status"], anime["rating"], anime["url"], anime["images"]["jpg"]["image_url"],anime["score"])
 
             # print("This is anime: " + animeObject.__str__())
             animeList.append(animeObject)

@@ -1,7 +1,7 @@
 import json
 class Anime:
 
-    def __init__(self, engName, japName, bCastType, eps, airStatus, ageGroup, url, image):
+    def __init__(self, engName, japName, bCastType, eps, airStatus, ageGroup, url, image,score):
         self.engName = engName
         self.japName = japName
         self.bCastType = bCastType
@@ -10,6 +10,7 @@ class Anime:
         self.ageGroup = ageGroup
         self.url = url
         self.image = image
+        self.score = score
 
 
     def get_eng_name(self):

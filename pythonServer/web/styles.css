@@ -1,0 +1,45 @@
+html{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-image: url(kok.jpg);
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.obal{
+    margin: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    background: #ffffff73;
+    border-radius: 25px;
+}
+.left{
+    padding: 10px;
+    padding-left: 50px;
+    padding-top: 60px;
+    width: 50%;
+}
+.uvod{
+    display: flex;
+    justify-content: center;
+}
+.right{
+    padding: 20px;
+    width: 50%;
+    text-align: center;
+}
+#btnActive{
+    height: 30px;
+    margin-top: 40px;
+}
+h2{
+color: white;
+padding: 20px;
+}
+a{
+    text-decoration: none;
+}
