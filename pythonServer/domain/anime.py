@@ -1,6 +1,7 @@
+import json
 class Anime:
 
-    def __init__(self, engName, japName, bCastType, eps, airStatus, ageGroup, url):
+    def __init__(self, engName, japName, bCastType, eps, airStatus, ageGroup, url, image):
         self.engName = engName
         self.japName = japName
         self.bCastType = bCastType
@@ -8,6 +9,7 @@ class Anime:
         self.airStatus = airStatus
         self.ageGroup = ageGroup
         self.url = url
+        self.image = image
 
 
     def get_eng_name(self):
@@ -56,6 +58,9 @@ class Anime:
         return "anglický název: % s, " \
                "japonský název: % s, typ vysílání: % s, status vysílání: % s, počet epizod: % s, věková skupina: % s, odkaz na mal: % s" % (
             self.engName, self.japName, self.bCastType, self.eps, self.airStatus, self.ageGroup, self.url)
+
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
 class Param:
     def __init__(self, sfw,order_by, minScore, sort):

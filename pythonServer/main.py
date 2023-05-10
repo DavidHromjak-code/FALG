@@ -1,10 +1,12 @@
 import eel
+from loadData import load_data
 
 eel.init("web")
 
-@eel.expose
-def helloWorld():
 
-  return ["Hello world", "Hello", "BABA", "YAGA"]
+@eel.expose
+def get_data():
+    return load_data()
+
 
 eel.start("index.html")

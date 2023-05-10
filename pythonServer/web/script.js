@@ -1,14 +1,15 @@
  async function get_data_python() {
-   let prompt = eel.helloWorld()((setData) => {
+   eel.get_data()((setData) => {
        setData.forEach(object => {
+           console.log(object);
+           object = JSON.parse(object);
+           console.log(object);
          const para = document.createElement("p");
-         const node = document.createTextNode(object);
+         const node = document.createTextNode(object["engName"]);
          para.appendChild(node);
          const element = document.getElementById("content");
          element.appendChild(para);
        })
      }
    )
-   console.log(prompt);
-
  }
