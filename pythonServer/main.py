@@ -9,4 +9,4 @@ def get_data():
     return load_data()
 
 
-eel.start('index.html', mode='chrome', port=8180, host='localhost')
+eel.start('index.html', mode='chrome', port=8280, host='localhost')
